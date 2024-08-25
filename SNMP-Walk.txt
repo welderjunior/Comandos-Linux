@@ -1,0 +1,25 @@
+COMANDOS PARA DESCOBRUR OID
+
+LINUX
+Versão 2
+snmpwalk -v2c -c public 192.168.50.15
+
+-v: versão
+-c: comunity
+
+Versão 3
+snmpwalk -v3 -l authPriv -aSHA - xAES -A(senha) -X(senha) -u(comunity) IP
+
+-l auth: Tipo de autenticação
+-a: Proctocolo de autenticação
+-x: Proctocolo de encriptação
+-A: senha de autenticação
+-X: senha de encriptação
+-u: Comunity SNMP
+
+MIKROTIK
+interface print oid
+system resource print oid
+
+
+OBS: É POSSÍVEL CONSULTAR A MIB DE OID NO SITE DOS FABRICANTES
