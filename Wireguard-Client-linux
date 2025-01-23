@@ -1,0 +1,34 @@
+
+sudo add-apt-repository ppa:wireguard/wireguard
+
+sudo apt install wireguard
+
+sudo apt install resolvconf
+
+cd /etc/wireguard
+
+nano wg0.conf
+
+MODELO
+
+[Interface]
+PrivateKey = YOUR-PRIVATE-KEY
+ListenPort = Port
+Address = YOUR-IP-INTERFACE
+
+[Peer]
+PublicKey = YOUR-PUBLIC-KEY
+AllowedIPs = BLOCOS-IPs
+Endpoint = IP-VPN
+
+CRIAR CERTIFICADOS
+
+umask 077
+cd /etc/wireguard/
+sudo mkdir keys
+sudo chown -R :$USER keys
+sudo chmod 775 keys
+cd keys
+wg genkey | tee private_key | wg pubkey > public_key
+sudo chown $USER:$USER private_key
+sudo chown $USER:$USER public_key
